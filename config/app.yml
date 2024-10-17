@@ -1,0 +1,37 @@
+# +----------------------------------------------------------------------
+# | 应用设置
+# +----------------------------------------------------------------------
+
+# 环境设置
+env: dev
+
+# 应用地址
+host: 127.0.0.1
+
+# 应用端口
+port: 8066
+
+# 是否启用路由
+with_route: true
+
+# 是否启用 TLS
+with_TLS: false
+
+# 设置 TLS 证书相对路径(ridge)
+crt_file: /myCert.crt
+key_file: /myCert.key
+
+# 视图目录(文件后缀: .html)
+view_dir: /view
+
+# public 静态资源目录
+public_dir: /public
+
+# 是否开启 swagger
+with_swagger: true
+
+# 是否启用 pprof
+with_pprof: true
+
+# 默认时区
+default_timezone: Asia/Shanghai

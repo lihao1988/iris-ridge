@@ -1,0 +1,156 @@
+definitions:
+  dto.APIError:
+    properties:
+      code:
+        example: 400
+        type: integer
+      data: {}
+      msg:
+        example: error
+        type: string
+    type: object
+  dto.APISuccess:
+    properties:
+      code:
+        example: 200
+        type: integer
+      data: {}
+      msg:
+        example: success
+        type: string
+    type: object
+  dto.LoginReq:
+    properties:
+      name:
+        minLength: 6
+        type: string
+      password:
+        minLength: 8
+        type: string
+    required:
+    - name
+    - password
+    type: object
+info:
+  contact: {}
+paths:
+  /app/user/info:
+    get:
+      consumes:
+      - application/json
+      description: 用于获取用户信息
+      parameters:
+      - description: auth token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - in: query
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 请求成功
+          schema:
+            $ref: '#/definitions/dto.APISuccess'
+        "400":
+          description: 请求错误
+          schema:
+            $ref: '#/definitions/dto.APIError'
+      summary: 获取用户信息
+      tags:
+      - 用户功能模块
+    post:
+      consumes:
+      - multipart/form-data
+      description: 用于创建新用户
+      parameters:
+      - description: auth token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: 用户名称
+        in: formData
+        name: name
+        required: true
+        type: string
+      - description: 备注信息
+        in: formData
+        name: context
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 请求成功
+          schema:
+            $ref: '#/definitions/dto.APISuccess'
+        "400":
+          description: 请求错误
+          schema:
+            $ref: '#/definitions/dto.APIError'
+      summary: 创建新用户
+      tags:
+      - 用户功能模块
+  /app/user/login:
+    post:
+      consumes:
+      - application/json
+      description: 用于用户登录操作
+      parameters:
+      - description: auth token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: 用户信息
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.LoginReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 请求成功
+          schema:
+            $ref: '#/definitions/dto.APISuccess'
+        "400":
+          description: 请求错误
+          schema:
+            $ref: '#/definitions/dto.APIError'
+      summary: 用户登录
+      tags:
+      - 用户功能模块
+  /app/user/logout:
+    get:
+      consumes:
+      - application/json
+      description: 用于用户登出操作
+      parameters:
+      - description: auth token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 请求成功
+          schema:
+            $ref: '#/definitions/dto.APISuccess'
+        "400":
+          description: 请求错误
+          schema:
+            $ref: '#/definitions/dto.APIError'
+      summary: 用户登出
+      tags:
+      - 用户功能模块
+swagger: "2.0"

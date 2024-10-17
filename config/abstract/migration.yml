@@ -1,0 +1,9 @@
+# 迁移文件目录
+migration_dir: /migration/scripts
+
+# 是否允许迁移缺失
+allow_missing: true
+
+# 是否自动执行数据迁移
+auto_migrate: false
+

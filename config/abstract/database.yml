@@ -1,0 +1,31 @@
+# 默认使用的数据库连接配置
+default: mysql
+
+# 数据库连接配置信息
+connections:
+    # mysql 连接配置
+    mysql:
+       # 服务器地址
+       host: 127.0.0.1
+       # 服务器端口
+       port: 3306
+       # 数据库名
+       database: test
+       # 用户名
+       username: root
+       # 密码
+       password: 123456
+       # 数据库编码默认采用 utf8mb4
+       charset: utf8mb4
+       # 连接池最大空闲连接数
+       maxIdle_count: 10
+       # 连接池允许打开的最大连接数
+       max_open_count: 100
+       # 数据库表前缀
+       prefix: t_
+       # 数据库连接参数<map>
+       params:
+          # sql 允许多条执行
+          allowMultiQueries: true
+
+    # 更多的数据库配置信息
